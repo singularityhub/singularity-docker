@@ -45,6 +45,6 @@ RUN git clone -b vault/release-2.5 https://github.com/sylabs/singularity.git && 
     cd /tmp/singularity && \
     ./autogen.sh && \
     ./configure --prefix=/usr/local && \
-    make && sudo make install
+    make && make install
 
 ENTRYPOINT ["/usr/local/bin/singularity"]
