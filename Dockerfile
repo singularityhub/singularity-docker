@@ -32,7 +32,6 @@ RUN apt-get update && \
                    debootstrap \
                    yum \
                    uuid-dev \
-                   zypper \
                    libssl-dev
 
 
