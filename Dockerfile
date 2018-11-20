@@ -36,6 +36,7 @@ RUN apt-get update && \
                    python3-dev \
                    python3-pip
 
+LABEL Maintainer vsochat@stanford.edu
 
 # Install Singularity from Github
 WORKDIR /tmp
@@ -44,6 +45,6 @@ RUN git clone -b vault/release-2.6 https://github.com/sylabs/singularity.git && 
     cd /tmp/singularity && \
     ./autogen.sh && \
     ./configure --prefix=/usr/local && \
-    make && sudo make install
+    make && make install
 
 ENTRYPOINT ["/usr/local/bin/singularity"]
