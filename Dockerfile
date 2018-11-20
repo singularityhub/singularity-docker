@@ -1,4 +1,4 @@
-FROM: debian:
+FROM: debian:stretch
 
 ################################################################################
 # Instance Preparation
@@ -33,14 +33,12 @@ RUN apt-get update && \
                    yum \
                    uuid-dev \
                    zypper \
-                   libssl-dev \
-                   python3-pip
+                   libssl-dev
 
-LABEL Maintainer vsochat@stanford.edu
 
 # Install Singularity from Github
 WORKDIR /tmp
-RUN git clone -b vault/release-2.5 https://github.com/cclerget/singularity.git &&
+RUN git clone -b vault/release-2.5 https://github.com/sylabs/singularity.git &&
     cd /tmp/singularity && \
     ./autogen.sh && \
     ./configure --prefix=/usr/local && \
