@@ -1,4 +1,4 @@
-FROM: debian:stretch
+FROM debian:stretch
 
 ################################################################################
 # Instance Preparation
@@ -43,3 +43,5 @@ RUN git clone -b vault/release-2.4 https://github.com/sylabs/singularity.git &&
     ./autogen.sh && \
     ./configure --prefix=/usr/local && \
     make && sudo make install
+
+ENTRYPOINT ["/usr/local/bin/singularity"]
