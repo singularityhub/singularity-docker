@@ -32,11 +32,15 @@ RUN apt-get update && \
                    debootstrap \
                    yum \
                    uuid-dev \
-                   libssl-dev
+                   libssl-dev \
+                   python3-dev \
+                   python3-pip
 
+LABEL Maintainer vsochat@stanford.edu
 
 # Install Singularity from Github
 WORKDIR /tmp
+RUN pip3 install sregistry[all]
 RUN git clone -b vault/release-2.5 https://github.com/sylabs/singularity.git && \
     cd /tmp/singularity && \
     ./autogen.sh && \
