@@ -32,13 +32,12 @@ RUN apt-get update && \
                    debootstrap \
                    yum \
                    uuid-dev \
-                   zypper \
                    libssl-dev
 
 
 # Install Singularity from Github
 WORKDIR /tmp
-RUN git clone -b vault/release-2.4 https://github.com/sylabs/singularity.git &&
+RUN git clone -b vault/release-2.4 https://github.com/sylabs/singularity.git && \
     cd /tmp/singularity && \
     ./autogen.sh && \
     ./configure --prefix=/usr/local && \
