@@ -40,7 +40,6 @@ LABEL Maintainer vsochat@stanford.edu
 
 # Install Singularity from Github
 WORKDIR /tmp
-RUN sed -i -e 's/^Defaults\tsecure_path.*$//' /etc/sudoers
 RUN pip3 install sregistry[all]
 RUN git clone -b vault/release-2.6 https://github.com/sylabs/singularity.git && \
     cd /tmp/singularity && \
