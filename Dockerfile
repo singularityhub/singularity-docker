@@ -47,4 +47,4 @@ RUN git clone -b vault/release-2.6 https://github.com/sylabs/singularity.git && 
     ./configure --prefix=/usr/local && \
     make && make install
 
-ENTRYPOINT ["/usr/local/bin/singularity"]
+ENTRYPOINT ["/bin/bash", "-l", "-c"]
