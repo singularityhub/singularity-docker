@@ -19,13 +19,7 @@ branches, so that a single push to master doesn't trigger a build of all version
 
 See the  [singularityware/singularity](https://hub.docker.com/r/singularityware/singularity/) repository on Docker Hub.
 
-For GitLab CI, we needed a container with a `/bin/bash` entrypoint, e.g.,
-
-```bash
-ENTRYPOINT ["/bin/bash", "-l", "-c"]
-```
-
-To resolves [this issue](https://gitlab.com/gitlab-org/gitlab-runner/issues/2109#note_47480476).
+For GitLab CI, we needed a container without an `ENTRYPOINT`. That is the only difference.
 
 ## Use Cases
 
