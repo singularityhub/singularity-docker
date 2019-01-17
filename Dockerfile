@@ -40,6 +40,7 @@ RUN mkdir -p /usr/local/var/singularity/mnt && \
 # See https://docs.docker.com/develop/develop-images/multistage-build/
 # for more information on multi-stage builds.
 FROM alpine:3.7
+LABEL Maintainer vsochat@stanford.edu
 COPY --from=builder /usr/local/singularity /usr/local/singularity
 RUN apk add --no-cache ca-certificates libseccomp squashfs-tools
 ENV PATH="/usr/local/singularity/bin:$PATH"
