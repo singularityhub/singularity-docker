@@ -14,6 +14,7 @@ branches, so that a single push to master doesn't trigger a build of all version
  - [vault/release-2.5](https://github.com/singularityhub/singularity-docker/tree/2.5): Builds to singularityware/singularity:2.5
  - [vault/release-2.6](https://github.com/singularityhub/singularity-docker/tree/2.6): Builds to singularityware/singularity:2.6
  - [release-3.0](https://github.com/singularityhub/singularity-docker/tree/3.0): Builds to singularityware/singularity:3.0
+ - [release-3.0.2](https://github.com/singularityhub/singularity-docker/tree/3.0.2): Builds to singularityware/singularity:3.0.2
 
 See the  [singularityware/singularity](https://hub.docker.com/r/singularityware/singularity/) repository on Docker Hub.
 

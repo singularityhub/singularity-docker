@@ -2,7 +2,7 @@ FROM iron/go:dev
 
 ################################################################################
 #
-# Copyright (C) 2018 Vanessa Sochat.
+# Copyright (C) 2019 Vanessa Sochat.
 #
 # This program is free software: you can redistribute it and/or modify it
 # under the terms of the GNU Affero General Public License as published by
@@ -30,7 +30,8 @@ LABEL Maintainer vsochat@stanford.edu
 RUN mkdir -p /usr/local/var/singularity/mnt && \
     mkdir -p $GOPATH/src/github.com/sylabs && \
     cd $GOPATH/src/github.com/sylabs && \
-    git clone -b release-3.0 https://github.com/sylabs/singularity.git && \
+    wget https://github.com/sylabs/singularity/releases/download/v3.0.2/singularity-3.0.2.tar.gz && \
+    tar -xzvf singularity-3.0.2.tar.gz && \
     cd singularity && \
     go get -u -v github.com/golang/dep/cmd/dep && \
     ./mconfig -p /usr/local && \
