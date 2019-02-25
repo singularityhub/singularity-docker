@@ -1,8 +1,8 @@
-FROM iron/go:dev
+FROM iron/go:dev as builder
 
 ################################################################################
 #
-# Copyright (C) 2018 Vanessa Sochat.
+# Copyright (C) 2019 Vanessa Sochat.
 #
 # This program is free software: you can redistribute it and/or modify it
 # under the terms of the GNU Affero General Public License as published by
@@ -30,13 +30,19 @@ LABEL Maintainer vsochat@stanford.edu
 RUN mkdir -p /usr/local/var/singularity/mnt && \
     mkdir -p $GOPATH/src/github.com/sylabs && \
     cd $GOPATH/src/github.com/sylabs && \
-    git clone -b release-3.0 https://github.com/sylabs/singularity.git && \
+    wget -qO- https://github.com/sylabs/singularity/releases/download/v3.1.0/singularity-3.1.0.tar.gz | \
+    tar xzv && \
     cd singularity && \
     go get -u -v github.com/golang/dep/cmd/dep && \
-    ./mconfig -p /usr/local && \
+    ./mconfig -p /usr/local/singularity && \
     make -C builddir && \
     make -C builddir install
 
-RUN apk del automake libtool m4 autoconf alpine-sdk linux-headers
-
-ENTRYPOINT ["/usr/local/bin/singularity"]
+# See https://docs.docker.com/develop/develop-images/multistage-build/
+# for more information on multi-stage builds.
+FROM alpine:3.7
+LABEL Maintainer vsochat@stanford.edu
+COPY --from=builder /usr/local/singularity /usr/local/singularity
+RUN apk add --no-cache ca-certificates libseccomp squashfs-tools
+ENV PATH="/usr/local/singularity/bin:$PATH"
+ENTRYPOINT ["/usr/local/singularity/bin/singularity"]
