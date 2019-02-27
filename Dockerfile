@@ -40,4 +40,4 @@ RUN mkdir -p /usr/local/var/singularity/mnt && \
 
 RUN apk del automake libtool m4 autoconf alpine-sdk linux-headers
 
-ENTRYPOINT ["/usr/local/bin/singularity"]
+
