@@ -1,4 +1,4 @@
-FROM iron/go:dev
+FROM iron/go:dev as builder
 
 ################################################################################
 #
@@ -21,19 +21,27 @@ FROM iron/go:dev
 
 # alpine image with the go tools
 
-LABEL authors=vsochat@stanford.edu,j.scholtalbers@gmail.com
 RUN apk update && \
- 	apk add --no-cache bash git openssh gcc squashfs-tools sudo libtool gawk linux-headers \
-	build-base openssl-dev util-linux util-linux-dev debootstrap perl
-RUN apk add --virtual automake build-base linux-headers libffi-dev && \
-    mkdir -p /usr/local/var/singularity/mnt && \
+    apk add --virtual automake build-base linux-headers libffi-dev
+RUN apk add --no-cache bash git openssh gcc squashfs-tools sudo libtool gawk
+RUN apk add --no-cache linux-headers build-base openssl-dev util-linux util-linux-dev
+
+LABEL Maintainer vsochat@stanford.edu
+RUN mkdir -p /usr/local/var/singularity/mnt && \
     mkdir -p $GOPATH/src/github.com/sylabs && \
     cd $GOPATH/src/github.com/sylabs && \
-    wget https://github.com/sylabs/singularity/releases/download/v3.1.0/singularity-3.1.0.tar.gz && \
-    tar -xzvf singularity-3.1.0.tar.gz && \
+    wget -qO- https://github.com/sylabs/singularity/releases/download/v3.1.0/singularity-3.1.0.tar.gz | \
+    tar xzv && \
     cd singularity && \
     go get -u -v github.com/golang/dep/cmd/dep && \
-    ./mconfig -p /usr/local && \
+    ./mconfig -p /usr/local/singularity && \
     make -C builddir && \
-    make -C builddir install && \
-	apk del automake libtool m4 autoconf alpine-sdk linux-headers
+    make -C builddir install
+
+# See https://docs.docker.com/develop/develop-images/multistage-build/
+# for more information on multi-stage builds.
+FROM alpine:3.7
+LABEL Maintainer vsochat@stanford.edu
+COPY --from=builder /usr/local/singularity /usr/local/singularity
+RUN apk add --no-cache ca-certificates libseccomp squashfs-tools bash debootstrap perl
+ENV PATH="/usr/local/singularity/bin:$PATH"
