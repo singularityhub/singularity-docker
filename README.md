@@ -12,6 +12,7 @@ repository Github branches. The repository here also stories the various version
 branches, so that a single push to master doesn't trigger a build of all versions
 
  - [3.2.1-slim](https://github.com/singularityhub/singularity-docker/tree/3.2.1-slim): A multistage build that is smaller in size that builds to singularityware/singularity:3.2.1-slim.
+ - [3.2.1](https://github.com/singularityhub/singularity-docker/tree/3.2.1): Builds to singularityware/singularity:3.2.1.
  - [3.1.1-slim](https://github.com/singularityhub/singularity-docker/tree/3.1.1-slim): A multistage build that is smaller in size that builds to singularityware/singularity:3.1.1-slim.
  - [3.1.1](https://github.com/singularityhub/singularity-docker/tree/3.1.1): Builds to singularityware/singularity:3.1.1
  - [3.1-slim](https://github.com/singularityhub/singularity-docker/tree/3.1-slim): A multistage build that is smaller in size that builds to singularityware/singularity:3.1-slim.
