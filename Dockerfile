@@ -1,4 +1,4 @@
-FROM iron/go:dev as builder
+FROM golang:1.12.5-alpine3.9 as builder
 
 ################################################################################
 #
@@ -30,10 +30,9 @@ LABEL Maintainer vsochat@stanford.edu
 RUN mkdir -p /usr/local/var/singularity/mnt && \
     mkdir -p $GOPATH/src/github.com/sylabs && \
     cd $GOPATH/src/github.com/sylabs && \
-    wget -qO- https://github.com/sylabs/singularity/releases/download/v3.1.0/singularity-3.1.0.tar.gz | \
+    wget -qO- https://github.com/sylabs/singularity/releases/download/v3.2.1/singularity-3.2.1.tar.gz | \
     tar xzv && \
     cd singularity && \
-    go get -u -v github.com/golang/dep/cmd/dep && \
     ./mconfig -p /usr/local/singularity && \
     make -C builddir && \
     make -C builddir install
