@@ -80,7 +80,7 @@ test: &test
       DOCKER_TAG="${CIRCLE_BRANCH}"
       echo "1. Testing run without arguments..."
       echo "docker run ${CONTAINER_NAME}:${DOCKER_TAG}"
-      docker run "${CONTAINER_NAME}:${DOCKER_TAG}"
+      docker run "${CONTAINER_NAME}:${DOCKER_TAG}" --help
       echo "Return value $?"
 
 ################################################################################
