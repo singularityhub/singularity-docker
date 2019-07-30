@@ -1,4 +1,4 @@
-FROM golang:1.12.5-alpine3.9
+FROM golang:1.12.7-alpine3.10
 
 ################################################################################
 #
@@ -30,8 +30,8 @@ LABEL Maintainer vsochat@stanford.edu
 RUN mkdir -p /usr/local/var/singularity/mnt && \
     mkdir -p $GOPATH/src/github.com/sylabs && \
     cd $GOPATH/src/github.com/sylabs && \
-    wget https://github.com/sylabs/singularity/releases/download/v3.2.1/singularity-3.2.1.tar.gz && \
-    tar -xzvf singularity-3.2.1.tar.gz && \
+    wget https://github.com/sylabs/singularity/releases/download/v3.3.0/singularity-3.3.0.tar.gz && \
+    tar -xzvf singularity-3.3.0.tar.gz && \
     cd singularity && \
     ./mconfig -p /usr/local && \
     make -C builddir && \
