@@ -1,4 +1,4 @@
-FROM golang:1.12.5-alpine3.9 as builder
+FROM golang:1.12.7-alpine3.10 as builder
 
 ################################################################################
 #
@@ -30,7 +30,7 @@ LABEL Maintainer vsochat@stanford.edu
 RUN mkdir -p /usr/local/var/singularity/mnt && \
     mkdir -p $GOPATH/src/github.com/sylabs && \
     cd $GOPATH/src/github.com/sylabs && \
-    wget -qO- https://github.com/sylabs/singularity/releases/download/v3.2.1/singularity-3.2.1.tar.gz | \
+    wget -qO- https://github.com/sylabs/singularity/releases/download/v3.3.0/singularity-3.3.0.tar.gz | \
     tar xzv && \
     cd singularity && \
     ./mconfig -p /usr/local/singularity && \
@@ -39,7 +39,7 @@ RUN mkdir -p /usr/local/var/singularity/mnt && \
 
 # See https://docs.docker.com/develop/develop-images/multistage-build/
 # for more information on multi-stage builds.
-FROM alpine:3.7
+FROM alpine:3.10
 LABEL Maintainer vsochat@stanford.edu
 COPY --from=builder /usr/local/singularity /usr/local/singularity
 RUN apk add --no-cache ca-certificates libseccomp squashfs-tools
