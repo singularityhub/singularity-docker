@@ -24,7 +24,7 @@ FROM golang:1.12.7-alpine3.10
 RUN apk update && \
     apk add --virtual automake build-base linux-headers libffi-dev
 RUN apk add --no-cache bash git openssh gcc squashfs-tools sudo libtool gawk
-RUN apk add --no-cache linux-headers build-base openssl-dev util-linux util-linux-dev
+RUN apk add --no-cache linux-headers build-base openssl-dev util-linux util-linux-dev shadow-uidmap
 
 LABEL Maintainer vsochat@stanford.edu
 RUN mkdir -p /usr/local/var/singularity/mnt && \
