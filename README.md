@@ -32,7 +32,8 @@ branches, so that a single push to master doesn't trigger a build of all version
  - [vault/release-2.5](https://github.com/singularityhub/singularity-docker/tree/2.5): Builds to singularityware/singularity:2.5
  - [vault/release-2.4](https://github.com/singularityhub/singularity-docker/tree/2.4): Builds to singularityware/singularity:2.4
 
-See the  [singularityware/singularity](https://hub.docker.com/r/singularityware/singularity/) repository on Docker Hub.
+We used to use [singularityware/singularity](https://hub.docker.com/r/singularityware/singularity/) on Docker Hub, but have
+switched to [quay.io/singularity/singularity](https://quay.io/repository/singularity/singularity) for much better deployment features.
 
 For GitLab CI, we needed a container without an `ENTRYPOINT`. That is the only difference.
 
@@ -44,5 +45,5 @@ these environments. To work correctly with Docker, the container needs to be run
 in privileged mode.
 
 ```bash
-docker run --privileged -t --rm singularityware/singularity:2.6
+$ docker run --privileged -t --rm singularityware/singularity:2.6
 ```
