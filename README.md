@@ -11,6 +11,9 @@ The versions below are automated builds, and rely on the [Singularity](https://g
 repository Github branches. The repository here also stories the various versions in different
 branches, so that a single push to master doesn't trigger a build of all versions
 
+
+ - [v3.4.1-slim](https://github.com/singularityhub/singularity-docker/tree/v3.4.1-slim): A multistage build that is smaller in size that builds to singularityware/singularity:v3.4.1-slim.
+ - [v3.4.1](https://github.com/singularityhub/singularity-docker/tree/v3.4.1): Builds to singularityware/singularity:v3.4.1.
  - [v3.4.0-slim](https://github.com/singularityhub/singularity-docker/tree/v3.4.0-slim): A multistage build that is smaller in size that builds to singularityware/singularity:v3.4.0-slim.
  - [v3.4.0](https://github.com/singularityhub/singularity-docker/tree/v3.4.0): Builds to singularityware/singularity:v3.4.0.
  - [v3.3.0-slim](https://github.com/singularityhub/singularity-docker/tree/3.3.0-slim): A multistage build that is smaller in size that builds to singularityware/singularity:v3.3.0-slim.
@@ -45,5 +48,5 @@ these environments. To work correctly with Docker, the container needs to be run
 in privileged mode.
 
 ```bash
-$ docker run --privileged -t --rm singularityware/singularity:2.6
+$ docker run --privileged -t --rm quay.io/singularityware/singularity:v3.4.1
 ```
