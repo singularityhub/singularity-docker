@@ -18,7 +18,7 @@ defaults: &defaults
     - image: docker:18.01.0-ce-git
   working_directory: /tmp/src
   environment:
-    - CONTAINER_NAME: singularityware/singularity
+    - CONTAINER_NAME: quay.io/singularity/singularity
 
 # Installation
 
@@ -59,7 +59,7 @@ dockerdeploy: &dockerdeploy
       DOCKER_TAG="${CIRCLE_BRANCH}"
       echo "Container name set to ${CONTAINER_NAME}:${DOCKER_TAG}"
       if [[ -n "$DOCKER_PASS" ]]; then
-            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker login -u $DOCKER_USER -p $DOCKER_PASS quay.io
             docker push ${CONTAINER_NAME}:${DOCKER_TAG}
 
             # If branch master, we deploy latest
