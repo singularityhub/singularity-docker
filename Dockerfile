@@ -30,8 +30,8 @@ LABEL Maintainer vsochat@stanford.edu
 RUN mkdir -p /usr/local/var/singularity/mnt && \
     mkdir -p $GOPATH/src/github.com/sylabs && \
     cd $GOPATH/src/github.com/sylabs && \
-    wget https://github.com/sylabs/singularity/releases/download/v3.4.0/singularity-3.4.0.tar.gz && \
-    tar -xzvf singularity-3.4.0.tar.gz && \
+    wget https://github.com/sylabs/singularity/releases/download/v3.4.1/singularity-3.4.1.tar.gz && \
+    tar -xzvf singularity-3.4.1.tar.gz && \
     cd singularity && \
     ./mconfig -p /usr/local && \
     make -C builddir && \
