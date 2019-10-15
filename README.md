@@ -11,7 +11,8 @@ The versions below are automated builds, and rely on the [Singularity](https://g
 repository Github branches. The repository here also stories the various versions in different
 branches, so that a single push to master doesn't trigger a build of all versions
 
-
+ - [v3.4.2-slim](https://github.com/singularityhub/singularity-docker/tree/v3.4.2-slim): A multistage build that is smaller in size that builds to singularityware/singularity:v3.4.2-slim.
+ - [v3.4.2](https://github.com/singularityhub/singularity-docker/tree/v3.4.2): Builds to singularityware/singularity:v3.4.2.
  - [v3.4.1-slim](https://github.com/singularityhub/singularity-docker/tree/v3.4.1-slim): A multistage build that is smaller in size that builds to singularityware/singularity:v3.4.1-slim.
  - [v3.4.1](https://github.com/singularityhub/singularity-docker/tree/v3.4.1): Builds to singularityware/singularity:v3.4.1.
  - [v3.4.0-slim](https://github.com/singularityhub/singularity-docker/tree/v3.4.0-slim): A multistage build that is smaller in size that builds to singularityware/singularity:v3.4.0-slim.
