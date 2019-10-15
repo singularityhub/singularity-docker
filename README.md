@@ -6,7 +6,7 @@ versioned branches).
 
 ## Versions
 
-See the [master branch](https://github.com/singularityhub/singularity-docker) for a complete list of versions, and the  [singularityware/singularity](https://hub.docker.com/r/singularityware/singularity/) repository on Docker Hub.
+See the [master branch](https://github.com/singularityhub/singularity-docker) for a complete list of versions, and the  [singularity/singularity](https://quay.io/repository/singularity/singularity) container on Quay.io. Older versions can be found in the [singularityware/singularity](https://hub.docker.com/r/singularityware/singularity/) repository on Docker Hub.
 
 ## Use Cases
 
