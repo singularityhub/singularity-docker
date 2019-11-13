@@ -2,7 +2,7 @@ FROM golang:1.13-alpine3.10 as builder
 
 ################################################################################
 #
-# Copyright (C) 2019 Vanessa Sochat.
+# Copyright (C) 2019-2020 Vanessa Sochat.
 #
 # This program is free software: you can redistribute it and/or modify it
 # under the terms of the GNU Affero General Public License as published by
@@ -26,11 +26,12 @@ RUN apk update && \
 RUN apk add --no-cache bash git openssh gcc squashfs-tools sudo libtool gawk cryptsetup
 RUN apk add --no-cache linux-headers build-base openssl-dev util-linux util-linux-dev shadow-uidmap
 
+ENV SINGULARITY_VERSION=3.5.0
 LABEL Maintainer vsochat@stanford.edu
 RUN mkdir -p /usr/local/var/singularity/mnt && \
     mkdir -p $GOPATH/src/github.com/sylabs && \
     cd $GOPATH/src/github.com/sylabs && \
-    wget -qO- https://github.com/sylabs/singularity/releases/download/v3.4.2/singularity-3.4.2.tar.gz | \
+    wget -qO- https://github.com/sylabs/singularity/releases/download/v${SINGULARITY_VERSION}/singularity-${SINGULARITY_VERSION}.tar.gz | \
     tar xzv && \
     cd singularity && \
     ./mconfig -p /usr/local/singularity && \
