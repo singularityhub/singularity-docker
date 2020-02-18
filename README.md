@@ -13,6 +13,8 @@ The versions below are automated builds, and rely on the [Singularity](https://g
 repository Github branches. The repository here also stories the various versions in different
 branches, so that a single push to master doesn't trigger a build of all versions
 
+ - [v3.5.3-slim](https://github.com/singularityhub/singularity-docker/tree/v3.5.3-slim): A multistage build that is smaller in size that builds to quay.io/singularity/singularity:v3.5.1-slim.
+ - [v3.5.3](https://github.com/singularityhub/singularity-docker/tree/v3.5.1): Builds to quay.io/singularity/singularity:v3.5.3.
  - [v3.5.1-slim](https://github.com/singularityhub/singularity-docker/tree/v3.5.1-slim): A multistage build that is smaller in size that builds to quay.io/singularity/singularity:v3.5.1-slim.
  - [v3.5.1](https://github.com/singularityhub/singularity-docker/tree/v3.5.1): Builds to quay.io/singularity/singularity:v3.5.1.
  - [v3.5.0-slim](https://github.com/singularityhub/singularity-docker/tree/v3.5.0-slim): A multistage build that is smaller in size that builds to quay.io/singularity/singularity:v3.5.0-slim.
