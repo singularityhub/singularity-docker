@@ -9,11 +9,13 @@ and were previously hosted on [Docker Hub](https://hub.docker.com/r/singularityw
 
 ## Versions
 
-The versions below are automated builds, and rely on the [Singularity](https://github.com/sylabs/singularity)
+The versions below are automated builds, and rely on the [Singularity](https://github.com/hpcng/singularity)
 repository Github branches. The repository here also stories the various versions in different
 branches, so that a single push to master doesn't trigger a build of all versions
 
- - [v3.5.3-slim](https://github.com/singularityhub/singularity-docker/tree/v3.5.3-slim): A multistage build that is smaller in size that builds to quay.io/singularity/singularity:v3.5.1-slim.
+ - [v3.6.0-slim](https://github.com/singularityhub/singularity-docker/tree/v3.6.0-slim): A multistage build that is smaller in size that builds to quay.io/singularity/singularity:v3.6.0-slim.
+ - [v3.6.0](https://github.com/singularityhub/singularity-docker/tree/v3.6.0): Builds to quay.io/singularity/singularity:v3.6.0.
+ - [v3.5.3-slim](https://github.com/singularityhub/singularity-docker/tree/v3.5.3-slim): A multistage build that is smaller in size that builds to quay.io/singularity/singularity:v3.5.3-slim.
  - [v3.5.3](https://github.com/singularityhub/singularity-docker/tree/v3.5.1): Builds to quay.io/singularity/singularity:v3.5.3.
  - [v3.5.1-slim](https://github.com/singularityhub/singularity-docker/tree/v3.5.1-slim): A multistage build that is smaller in size that builds to quay.io/singularity/singularity:v3.5.1-slim.
  - [v3.5.1](https://github.com/singularityhub/singularity-docker/tree/v3.5.1): Builds to quay.io/singularity/singularity:v3.5.1.
@@ -57,5 +59,5 @@ these environments. To work correctly with Docker, the container needs to be run
 in privileged mode.
 
 ```bash
-$ docker run --privileged -t --rm quay.io/quay.io/singularity/singularity:v3.4.1
+$ docker run --privileged -t --rm quay.io/quay.io/singularity/singularity
 ```
