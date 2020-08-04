@@ -43,6 +43,7 @@ RUN mkdir -p /usr/local/var/singularity/mnt && \
 FROM alpine:3.10
 LABEL Maintainer vsochat@stanford.edu
 COPY --from=builder /usr/local/singularity /usr/local/singularity
-RUN apk add --no-cache ca-certificates libseccomp squashfs-tools
+RUN apk add --no-cache ca-certificates libseccomp squashfs-tools tzdata && \
+    cp /usr/share/zoneinfo/UTC /etc/localtime
 ENV PATH="/usr/local/singularity/bin:$PATH"
 ENTRYPOINT ["/usr/local/singularity/bin/singularity"]
