@@ -23,7 +23,7 @@ FROM golang:1.13-alpine3.10
 
 RUN apk update && \
     apk add --virtual automake build-base linux-headers libffi-dev
-RUN apk add --no-cache bash git openssh gcc squashfs-tools sudo libtool gawk cryptsetup
+RUN apk add --no-cache bash git openssh gcc squashfs-tools sudo libtool gawk cryptsetup tzdata
 RUN apk add --no-cache linux-headers build-base openssl-dev util-linux util-linux-dev shadow-uidmap
 
 ENV SINGULARITY_VERSION=3.6.1
@@ -38,6 +38,8 @@ RUN mkdir -p /usr/local/var/singularity/mnt && \
     make -C builddir && \
     make -C builddir install
 
-RUN apk del automake libtool m4 autoconf alpine-sdk linux-headers
+# ensure there is a localtime (choose UTC)
+RUN apk del automake libtool m4 autoconf alpine-sdk linux-headers && \
+    cp /usr/share/zoneinfo/UTC /etc/localtime
 
 ENTRYPOINT ["/usr/local/bin/singularity"]
