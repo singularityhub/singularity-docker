@@ -26,8 +26,8 @@ RUN apk update && \
 RUN apk add --no-cache bash git openssh gcc squashfs-tools sudo libtool gawk cryptsetup tzdata
 RUN apk add --no-cache linux-headers build-base openssl-dev util-linux util-linux-dev shadow-uidmap
 
-ENV SINGULARITY_VERSION=3.7.1
-LABEL Maintainer vsochat@stanford.edu
+ENV SINGULARITY_VERSION=3.7.2
+LABEL Maintainer @vsoch
 RUN mkdir -p /usr/local/var/singularity/mnt && \
     mkdir -p $GOPATH/src/github.com/hpcng && \
     cd $GOPATH/src/github.com/hpcng && \
