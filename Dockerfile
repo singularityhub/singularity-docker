@@ -26,12 +26,12 @@ RUN apk update && \
 RUN apk add --no-cache bash git openssh gcc squashfs-tools sudo libtool gawk cryptsetup
 RUN apk add --no-cache linux-headers build-base openssl-dev util-linux util-linux-dev shadow-uidmap
 
-ENV SINGULARITY_VERSION=3.7.3
+ENV SINGULARITY_VERSION=3.7.4
 LABEL Maintainer @vsoch
 RUN mkdir -p /usr/local/var/singularity/mnt && \
-    mkdir -p $GOPATH/src/github.com/hpcng && \
-    cd $GOPATH/src/github.com/hpcng && \
-    wget -qO- https://github.com/hpcng/singularity/releases/download/v${SINGULARITY_VERSION}/singularity-${SINGULARITY_VERSION}.tar.gz | \
+    mkdir -p $GOPATH/src/github.com/sylabs && \
+    cd $GOPATH/src/github.com/sylabs && \
+    wget -qO- https://github.com/sylabs/singularity/releases/download/v${SINGULARITY_VERSION}/singularity-${SINGULARITY_VERSION}.tar.gz | \
     tar xzv && \
     cd singularity && \
     ./mconfig -p /usr/local/singularity && \
@@ -41,7 +41,7 @@ RUN mkdir -p /usr/local/var/singularity/mnt && \
 # See https://docs.docker.com/develop/develop-images/multistage-build/
 # for more information on multi-stage builds.
 FROM alpine:3.10
-LABEL Maintainer vsochat@stanford.edu
+LABEL Maintainer @vsoch
 COPY --from=builder /usr/local/singularity /usr/local/singularity
 RUN apk add --no-cache ca-certificates libseccomp squashfs-tools tzdata && \
     cp /usr/share/zoneinfo/UTC /etc/localtime
