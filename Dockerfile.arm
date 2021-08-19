@@ -1,8 +1,8 @@
-FROM golang:1.16.6-alpine
+FROM golang:1.16.6-buster
 
 ################################################################################
 #
-# Copyright (C) 2019-2021 Vanessa Sochat.
+# Copyright (C) 2021 Vanessa Sochat.
 #
 # This program is free software: you can redistribute it and/or modify it
 # under the terms of the GNU Affero General Public License as published by
@@ -19,15 +19,19 @@ FROM golang:1.16.6-alpine
 #
 ################################################################################
 
-# alpine image with the go tools
-
-RUN apk update && \
-    apk add --virtual automake build-base linux-headers libffi-dev
-RUN apk add --no-cache bash git openssh gcc squashfs-tools sudo libtool gawk cryptsetup tzdata
-RUN apk add --no-cache linux-headers build-base openssl-dev util-linux util-linux-dev shadow-uidmap
-
+ENV DEBIAN_FRONTEND noninteractive
 ENV SINGULARITY_VERSION=3.8.1
 LABEL Maintainer @vsoch
+
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    libssl-dev \
+    uuid-dev \
+    libgpgme11-dev \
+    squashfs-tools \
+    libseccomp-dev \
+    pkg-config
+
 RUN mkdir -p /usr/local/var/singularity/mnt && \
     mkdir -p $GOPATH/src/github.com/sylabs && \
     cd $GOPATH/src/github.com/sylabs && \
@@ -37,9 +41,5 @@ RUN mkdir -p /usr/local/var/singularity/mnt && \
     ./mconfig -p /usr/local && \
     make -C builddir && \
     make -C builddir install
-
-# ensure there is a localtime (choose UTC)
-RUN apk del automake libtool m4 autoconf alpine-sdk linux-headers && \
-    cp /usr/share/zoneinfo/UTC /etc/localtime
 
 ENTRYPOINT ["/usr/local/bin/singularity"]
