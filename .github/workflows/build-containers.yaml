@@ -22,7 +22,7 @@ jobs:
         run: |
           branch=$(echo ${GITHUB_REF##*/})
           printf "Branch is ${branch}\n"
-          tagged="quay.io/singularity/singularity:${branch}"
+          tagged="quay.io/singularity/singularity:${branch}-test"
           if [[ "${branch}" == "master" ]]; then
               container="quay.io/singularity/singularity:latest"
           else
@@ -33,7 +33,7 @@ jobs:
           echo "tagged=${tagged}" >> $GITHUB_ENV
 
       - name: Log in to Quay Container Registry
-        if: github.event_name == 'push'
+#        if: github.event_name == 'push'
         uses: docker/login-action@v1
         with:
           registry: ghcr.io
@@ -48,7 +48,7 @@ jobs:
 
       - name: Build
         uses: docker/build-push-action@v2
-        if: github.event_name != 'push'
+#        if: github.event_name != 'push'
         with:
           file: ${{matrix.dockerfile[0]}}
           platforms: ${{ matrix.dockerfile[1] }}
@@ -59,7 +59,7 @@ jobs:
 
       - name: Build & Deploy
         uses: docker/build-push-action@v2
-        if: github.event_name == 'push'
+#        if: github.event_name == 'push'
         with:
           file: ${{matrix.dockerfile[0]}}
           platforms: ${{ matrix.dockerfile[1] }}
