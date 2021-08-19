@@ -23,7 +23,7 @@ FROM golang:1.13-alpine3.10 as builder
 
 RUN apk update && \
     apk add --virtual automake build-base linux-headers libffi-dev
-RUN apk add --no-cache bash git openssh gcc squashfs-tools sudo libtool gawk cryptsetup
+RUN apk add --no-cache bash git openssh gcc squashfs-tools sudo libtool gawk cryptsetup bash
 RUN apk add --no-cache linux-headers build-base openssl-dev util-linux util-linux-dev shadow-uidmap
 
 ENV SINGULARITY_VERSION=3.8.2
