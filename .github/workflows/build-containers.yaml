@@ -22,7 +22,7 @@ jobs:
         run: |
           branch=$(echo ${GITHUB_REF##*/})
           printf "Branch is ${branch}\n"
-          tagged="quay.io/singularity/singularity:${branch}-test"
+          tagged="quay.io/singularity/singularity:arm-test"
           if [[ "${branch}" == "master" ]]; then
               container="quay.io/singularity/singularity:latest"
           else
