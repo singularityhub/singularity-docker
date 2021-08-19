@@ -1,8 +1,7 @@
 name: Build & Deploy Docker Containers
 on:
-  # Build on push to main and pull request
-  pull_request: []
-  # push: []
+  # Build on push to any branch
+  push: []
 
 jobs:
   deploy-images:
