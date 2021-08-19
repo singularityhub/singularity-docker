@@ -43,5 +43,5 @@ RUN mkdir -p /usr/local/var/singularity/mnt && \
     make -C builddir install
 
 # Just delete source code, that's the main difference, no need for multi-stage
-RUN rm -rf $GOPATH/src/github.com/sylabs && apt-get uninstall pkg-config build-essential && apt-get clean
+RUN rm -rf $GOPATH/src/github.com/sylabs && apt-get remove pkg-config build-essential && apt-get clean
 ENTRYPOINT ["/usr/local/bin/singularity"]
