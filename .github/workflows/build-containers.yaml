@@ -26,7 +26,7 @@ jobs:
           if [[ "${branch}" == "master" ]]; then
               container="quay.io/singularity/singularity:latest"
           else
-              container=tagged          
+              container=${tagged}
           fi
           echo "container=${container}" >> $GITHUB_ENV
           echo "branch=${branch}" >> $GITHUB_ENV
