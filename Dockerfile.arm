@@ -1,0 +1,45 @@
+FROM golang:1.16.6-buster
+
+################################################################################
+#
+# Copyright (C) 2021 Vanessa Sochat.
+#
+# This program is free software: you can redistribute it and/or modify it
+# under the terms of the GNU Affero General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or (at your
+# option) any later version.
+#
+# This program is distributed in the hope that it will be useful, but WITHOUT
+# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+# FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Affero General Public
+# License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+#
+################################################################################
+
+ENV DEBIAN_FRONTEND noninteractive
+ENV SINGULARITY_VERSION=3.8.1
+LABEL Maintainer @vsoch
+
+RUN apt-get update && sudo apt-get install -y \
+    build-essential \
+    libssl-dev \
+    uuid-dev \
+    libgpgme11-dev \
+    squashfs-tools \
+    libseccomp-dev \
+    pkg-config
+
+RUN mkdir -p /usr/local/var/singularity/mnt && \
+    mkdir -p $GOPATH/src/github.com/sylabs && \
+    cd $GOPATH/src/github.com/sylabs && \
+    wget https://github.com/sylabs/singularity/releases/download/v${SINGULARITY_VERSION}/singularity-ce-${SINGULARITY_VERSION}.tar.gz && \
+    tar -xzvf singularity-ce-${SINGULARITY_VERSION}.tar.gz && \
+    cd singularity-ce-${SINGULARITY_VERSION} && \
+    ./mconfig -p /usr/local && \
+    make -C builddir && \
+    make -C builddir install
+
+ENTRYPOINT ["/usr/local/bin/singularity"]
