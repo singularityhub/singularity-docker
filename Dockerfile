@@ -1,4 +1,4 @@
-FROM golang:1.13-alpine3.10 as builder
+FROM golang:1.16.6-alpine as builder
 
 ################################################################################
 #
@@ -23,7 +23,7 @@ FROM golang:1.13-alpine3.10 as builder
 
 RUN apk update && \
     apk add --virtual automake build-base linux-headers libffi-dev
-RUN apk add --no-cache bash git openssh gcc squashfs-tools sudo libtool gawk cryptsetup bash
+RUN apk add --no-cache bash git openssh gcc squashfs-tools sudo libtool gawk cryptsetup
 RUN apk add --no-cache linux-headers build-base openssl-dev util-linux util-linux-dev shadow-uidmap
 
 ENV SINGULARITY_VERSION=3.8.2
@@ -43,7 +43,7 @@ RUN mkdir -p /usr/local/var/singularity/mnt && \
 FROM alpine:3.10
 LABEL Maintainer @vsoch
 COPY --from=builder /usr/local/singularity /usr/local/singularity
-RUN apk add --no-cache ca-certificates libseccomp squashfs-tools tzdata && \
+RUN apk add --no-cache ca-certificates libseccomp squashfs-tools tzdata bash && \
     cp /usr/share/zoneinfo/UTC /etc/localtime
 ENV PATH="/usr/local/singularity/bin:$PATH"
 ENTRYPOINT ["/usr/local/singularity/bin/singularity"]
