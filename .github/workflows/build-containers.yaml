@@ -11,7 +11,7 @@ jobs:
       fail-fast: false
       # Just build primary Dockerfile, tag, arm and amd64 for now
       matrix:
-        dockerfile: [[Dockerfile, 'linux/amd64'], ["Dockerfile.arm", 'linux/arm64']]
+        dockerfile: [[Dockerfile, 'linux/amd64', ''], ["Dockerfile.arm", 'linux/arm64', '-arm64']]
 
     name: Build ${{ matrix.dockerfile[0] }}
     steps:
@@ -22,9 +22,9 @@ jobs:
         run: |
           branch=$(echo ${GITHUB_REF##*/})
           printf "Branch is ${branch}\n"
-          tagged="quay.io/singularity/singularity:arm-test"
+          tagged="quay.io/singularity/singularity:${branch}${{ matrix.dockerfile[2] }}"
           if [[ "${branch}" == "master" ]]; then
-              container="quay.io/singularity/singularity:latest"
+              container="quay.io/singularity/singularity:latest${{ matrix.dockerfile[2] }}"
           else
               container=${tagged}
           fi
@@ -33,7 +33,7 @@ jobs:
           echo "tagged=${tagged}" >> $GITHUB_ENV
 
       - name: Log in to Quay Container Registry
-#        if: github.event_name == 'push'
+        if: github.event_name == 'push'
         uses: docker/login-action@v1
         with:
           registry: quay.io
@@ -57,7 +57,7 @@ jobs:
         with:
           file: ${{matrix.dockerfile[0]}}
           platforms: ${{ matrix.dockerfile[1] }}
-          push: true
+          push: false
           tags: |
             ${{ env.container }}
             ${{ env.tagged }}
