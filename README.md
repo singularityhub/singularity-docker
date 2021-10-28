@@ -14,6 +14,10 @@ repository Github branches. 3.7.4 and later we use [sylabs Singularity](https://
 is the company created specifically for Singularity.
 The repository here also stories the various versions in different branches, so that a single push to master doesn't trigger a build of all versions
 
+ - [v3.8.4-slim](https://github.com/singularityhub/singularity-docker/tree/v3.8.4-slim): A multistage build that is smaller in size that builds to quay.io/singularity/singularity:v3.8.4-slim.
+ - [v3.8.4](https://github.com/singularityhub/singularity-docker/tree/v3.8.3): Builds to quay.io/singularity/singularity:v3.8.4.
+ - [v3.8.3-slim](https://github.com/singularityhub/singularity-docker/tree/v3.8.3-slim): A multistage build that is smaller in size that builds to quay.io/singularity/singularity:v3.8.3-slim.
+ - [v3.8.3](https://github.com/singularityhub/singularity-docker/tree/v3.8.3): Builds to quay.io/singularity/singularity:v3.8.3.
  - [v3.8.2-slim](https://github.com/singularityhub/singularity-docker/tree/v3.8.2-slim): A multistage build that is smaller in size that builds to quay.io/singularity/singularity:v3.8.2-slim.
  - [v3.8.2](https://github.com/singularityhub/singularity-docker/tree/v3.8.2): Builds to quay.io/singularity/singularity:v3.8.2.
  - [v3.8.1-slim](https://github.com/singularityhub/singularity-docker/tree/v3.8.1-slim): A multistage build that is smaller in size that builds to quay.io/singularity/singularity:v3.8.1-slim.
