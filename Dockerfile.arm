@@ -2,7 +2,7 @@ FROM golang:1.16.6-buster
 
 ################################################################################
 #
-# Copyright (C) 2021 Vanessa Sochat.
+# Copyright (C) 2021-2022 Vanessa Sochat.
 #
 # This program is free software: you can redistribute it and/or modify it
 # under the terms of the GNU Affero General Public License as published by
@@ -20,7 +20,7 @@ FROM golang:1.16.6-buster
 ################################################################################
 
 ENV DEBIAN_FRONTEND noninteractive
-ENV SINGULARITY_VERSION=3.9.3
+ENV SINGULARITY_VERSION=3.9.4
 LABEL Maintainer @vsoch
 
 RUN apt-get update && apt-get install -y \
