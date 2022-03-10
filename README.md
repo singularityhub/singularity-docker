@@ -14,10 +14,14 @@ repository Github branches. 3.7.4 and later we use [sylabs Singularity](https://
 is the company created specifically for Singularity.
 The repository here also stories the various versions in different branches, so that a single push to master doesn't trigger a build of all versions
 
+ - [v3.9.6-slim](https://github.com/singularityhub/singularity-docker/tree/v3.9.6-slim): A multistage build that is smaller in size that builds to quay.io/singularity/singularity:v3.9.6-slim.
+ - [v3.9.6](https://github.com/singularityhub/singularity-docker/tree/v3.9.6): Builds to quay.io/singularity/singularity:v3.9.6.
+ - [v3.9.5-slim](https://github.com/singularityhub/singularity-docker/tree/v3.9.5-slim): A multistage build that is smaller in size that builds to quay.io/singularity/singularity:v3.9.5-slim.
+ - [v3.9.5](https://github.com/singularityhub/singularity-docker/tree/v3.9.5): Builds to quay.io/singularity/singularity:v3.9.5.
  - [v3.9.4-slim](https://github.com/singularityhub/singularity-docker/tree/v3.9.4-slim): A multistage build that is smaller in size that builds to quay.io/singularity/singularity:v3.9.4-slim.
- - [v3.9.4](https://github.com/singularityhub/singularity-docker/tree/v3.9.4): Builds to quay.io/singularity/singularity:v3.9.2.
+ - [v3.9.4](https://github.com/singularityhub/singularity-docker/tree/v3.9.4): Builds to quay.io/singularity/singularity:v3.9.4.
  - [v3.9.3-slim](https://github.com/singularityhub/singularity-docker/tree/v3.9.3-slim): A multistage build that is smaller in size that builds to quay.io/singularity/singularity:v3.9.3-slim.
- - [v3.9.3](https://github.com/singularityhub/singularity-docker/tree/v3.9.3): Builds to quay.io/singularity/singularity:v3.9.2.
+ - [v3.9.3](https://github.com/singularityhub/singularity-docker/tree/v3.9.3): Builds to quay.io/singularity/singularity:v3.9.3.
  - [v3.9.2-slim](https://github.com/singularityhub/singularity-docker/tree/v3.9.2-slim): A multistage build that is smaller in size that builds to quay.io/singularity/singularity:v3.9.2-slim.
  - [v3.9.2](https://github.com/singularityhub/singularity-docker/tree/v3.9.2): Builds to quay.io/singularity/singularity:v3.9.2.
  - [v3.9.1-slim](https://github.com/singularityhub/singularity-docker/tree/v3.9.1-slim): A multistage build that is smaller in size that builds to quay.io/singularity/singularity:v3.9.1-slim.
