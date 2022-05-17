@@ -30,7 +30,7 @@ RUN apt-get update && apt-get install -y \
     libgpgme11-dev \
     squashfs-tools \
     libseccomp-dev \
-    glib-dev \
+    libglib2.0-dev \
     pkg-config
 
 RUN mkdir -p /usr/local/var/singularity/mnt && \
