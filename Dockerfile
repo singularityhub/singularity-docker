@@ -23,8 +23,9 @@ FROM golang:1.17.8-alpine as builder
 
 RUN apk update && \
     apk add --virtual automake build-base linux-headers libffi-dev
-RUN apk add --no-cache bash git openssh gcc squashfs-tools sudo libtool gawk cryptsetup
-RUN apk add --no-cache linux-headers build-base openssl-dev util-linux util-linux-dev shadow-uidmap
+RUN apk add --no-cache bash git openssh gcc squashfs-tools sudo libtool gawk cryptsetup glib-dev
+RUN apk add --no-cache linux-headers build-base openssl-dev util-linux util-linux-dev shadow-uidmap libseccomp-dev
+
 
 ENV SINGULARITY_VERSION=3.10.0
 LABEL Maintainer @vsoch
