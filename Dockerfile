@@ -1,8 +1,8 @@
-FROM golang:1.17.8-alpine as builder
+FROM golang:1.20.0-alpine as builder
 
 ################################################################################
 #
-# Copyright (C) 2019-2022 Vanessa Sochat.
+# Copyright (C) 2019-2023 Vanessa Sochat.
 #
 # This program is free software: you can redistribute it and/or modify it
 # under the terms of the GNU Affero General Public License as published by
@@ -27,7 +27,7 @@ RUN apk add --no-cache bash git openssh gcc squashfs-tools sudo libtool gawk cry
 RUN apk add --no-cache linux-headers build-base openssl-dev util-linux util-linux-dev shadow-uidmap libseccomp-dev
 
 
-ENV SINGULARITY_VERSION=3.10.4
+ENV SINGULARITY_VERSION=3.11.0
 LABEL Maintainer @vsoch
 RUN mkdir -p /usr/local/var/singularity/mnt && \
     mkdir -p $GOPATH/src/github.com/sylabs && \
@@ -41,7 +41,7 @@ RUN mkdir -p /usr/local/var/singularity/mnt && \
 
 # See https://docs.docker.com/develop/develop-images/multistage-build/
 # for more information on multi-stage builds.
-FROM alpine:3.10
+FROM alpine:3.17
 LABEL Maintainer @vsoch
 COPY --from=builder /usr/local/singularity /usr/local/singularity
 RUN apk add --no-cache ca-certificates libseccomp squashfs-tools tzdata bash && \
