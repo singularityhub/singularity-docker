@@ -110,5 +110,5 @@ these environments. To work correctly with Docker, the container needs to be run
 in privileged mode.
 
 ```bash
-$ docker run --privileged -t --rm quay.io/quay.io/singularity/singularity
+$ docker run --privileged -t --rm quay.io/singularity/singularity
 ```
