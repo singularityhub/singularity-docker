@@ -20,7 +20,7 @@ FROM golang:1.17.8-buster
 ################################################################################
 
 ENV DEBIAN_FRONTEND noninteractive
-ENV SINGULARITY_VERSION=3.10.4
+ENV SINGULARITY_VERSION=4.0.0
 LABEL Maintainer @vsoch
 
 RUN apt-get update && apt-get install -y \
