@@ -1,4 +1,4 @@
-FROM golang:1.17.8-alpine
+FROM golang:1.21.3-alpine
 
 ################################################################################
 #
@@ -22,11 +22,11 @@ FROM golang:1.17.8-alpine
 # alpine image with the go tools
 
 RUN apk update && \
-    apk add --virtual automake build-base linux-headers libffi-dev
+    apk add --virtual .build-deps autoconf automake build-base linux-headers libffi-dev
 RUN apk add --no-cache bash git openssh gcc squashfs-tools sudo libtool gawk cryptsetup tzdata bash glib-dev
-RUN apk add --no-cache linux-headers build-base openssl-dev util-linux util-linux-dev shadow-uidmap libseccomp-dev
+RUN apk add --no-cache linux-headers build-base openssl-dev util-linux util-linux-dev shadow-uidmap libseccomp-dev fuse3-dev
 
-ENV SINGULARITY_VERSION=4.0.0
+ENV SINGULARITY_VERSION=4.0.1
 LABEL Maintainer @vsoch
 RUN mkdir -p /usr/local/var/singularity/mnt && \
     mkdir -p $GOPATH/src/github.com/sylabs && \
