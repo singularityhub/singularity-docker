@@ -33,6 +33,7 @@ RUN apt-get update && apt-get install -y \
     libglib2.0-dev \
     libfuse3-dev \
     autoconf \
+    libtool \
     fuse3 \
     g++ \
     pkg-config
