@@ -1,8 +1,8 @@
-FROM golang:1.17.8-buster
+FROM golang:1.21.3-alpine
 
 ################################################################################
 #
-# Copyright (C) 2021-2022 Vanessa Sochat.
+# Copyright (C) 2021-2023 Vanessa Sochat.
 #
 # This program is free software: you can redistribute it and/or modify it
 # under the terms of the GNU Affero General Public License as published by
@@ -31,11 +31,14 @@ RUN apt-get update && apt-get install -y \
     squashfs-tools \
     libseccomp-dev \
     libglib2.0-dev \
+    g++ \
     pkg-config
 
 RUN mkdir -p /usr/local/var/singularity/mnt && \
     mkdir -p $GOPATH/src/github.com/sylabs && \
     cd $GOPATH/src/github.com/sylabs && \
+    which go && \
+    go version && \
     wget https://github.com/sylabs/singularity/releases/download/v${SINGULARITY_VERSION}/singularity-ce-${SINGULARITY_VERSION}.tar.gz && \
     tar -xzvf singularity-ce-${SINGULARITY_VERSION}.tar.gz && \
     cd singularity-ce-${SINGULARITY_VERSION} && \
