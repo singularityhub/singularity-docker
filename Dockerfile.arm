@@ -32,6 +32,7 @@ RUN apt-get update && apt-get install -y \
     libseccomp-dev \
     libglib2.0-dev \
     libfuse3-dev \
+    autoconf \
     fuse3 \
     g++ \
     pkg-config
