@@ -32,8 +32,7 @@ RUN apt-get update && apt-get install -y \
     libseccomp-dev \
     libglib2.0-dev \
     libfuse3-dev \
-    fuse3 \
-    g++ \
+    libtool \
     pkg-config
 
 RUN mkdir -p /usr/local/var/singularity/mnt && \
