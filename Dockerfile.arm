@@ -31,6 +31,8 @@ RUN apt-get update && apt-get install -y \
     squashfs-tools \
     libseccomp-dev \
     libglib2.0-dev \
+    libfuse3-dev \
+    fuse3 \
     g++ \
     pkg-config
 
