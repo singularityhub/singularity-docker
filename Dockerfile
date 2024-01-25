@@ -2,7 +2,7 @@ FROM golang:1.21.3-alpine as builder
 
 ################################################################################
 #
-# Copyright (C) 2019-2022 Vanessa Sochat.
+# Copyright (C) 2019-2024 Vanessa Sochat.
 #
 # This program is free software: you can redistribute it and/or modify it
 # under the terms of the GNU Affero General Public License as published by
@@ -26,7 +26,7 @@ RUN apk update && \
 RUN apk add --no-cache bash git openssh gcc squashfs-tools sudo libtool gawk cryptsetup glib-dev tzdata bash glib-dev
 RUN apk add --no-cache linux-headers build-base openssl-dev util-linux util-linux-dev shadow-uidmap libseccomp-dev fuse3-dev
 
-ENV SINGULARITY_VERSION=4.0.1
+ENV SINGULARITY_VERSION=4.1.0
 LABEL Maintainer @vsoch
 RUN mkdir -p /usr/local/var/singularity/mnt && \
     mkdir -p $GOPATH/src/github.com/sylabs && \
