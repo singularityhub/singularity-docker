@@ -1,8 +1,8 @@
-FROM golang:1.21.3-alpine
+FROM golang:1.24.3-alpine
 
 ################################################################################
 #
-# Copyright (C) 2019-2024 Vanessa Sochat.
+# Copyright (C) 2019-2025 Vanessa Sochat.
 #
 # This program is free software: you can redistribute it and/or modify it
 # under the terms of the GNU Affero General Public License as published by
@@ -23,11 +23,11 @@ FROM golang:1.21.3-alpine
 
 RUN apk update && \
     apk add --virtual .build-deps autoconf automake build-base linux-headers libffi-dev
-RUN apk add --no-cache bash git openssh gcc squashfs-tools sudo libtool gawk cryptsetup tzdata bash glib-dev
-RUN apk add --no-cache linux-headers build-base openssl-dev util-linux util-linux-dev shadow-uidmap libseccomp-dev fuse3-dev
+RUN apk add --no-cache bash git openssh gcc squashfs-tools sudo libtool gawk cryptsetup tzdata bash glib-dev build-base
+RUN apk add --no-cache linux-headers build-base openssl-dev util-linux util-linux-dev shadow-subids shadow-dev shadow-uidmap libseccomp-dev fuse3-dev
 
-ENV SINGULARITY_VERSION=4.1.0
-LABEL Maintainer @vsoch
+ENV SINGULARITY_VERSION=4.3.1
+LABEL Maintainer="@vsoch"
 RUN mkdir -p /usr/local/var/singularity/mnt && \
     mkdir -p $GOPATH/src/github.com/sylabs && \
     cd $GOPATH/src/github.com/sylabs && \

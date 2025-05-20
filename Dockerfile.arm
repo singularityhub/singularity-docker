@@ -1,8 +1,8 @@
-FROM golang:1.21.3-bookworm
+FROM golang:1.24.3-bookworm
 
 ################################################################################
 #
-# Copyright (C) 2021-2024 Vanessa Sochat.
+# Copyright (C) 2021-2025 Vanessa Sochat.
 #
 # This program is free software: you can redistribute it and/or modify it
 # under the terms of the GNU Affero General Public License as published by
@@ -19,9 +19,9 @@ FROM golang:1.21.3-bookworm
 #
 ################################################################################
 
-ENV DEBIAN_FRONTEND noninteractive
-ENV SINGULARITY_VERSION=4.1.0
-LABEL Maintainer @vsoch
+ENV DEBIAN_FRONTEND=noninteractive
+ENV SINGULARITY_VERSION=4.3.0
+LABEL Maintainer="@vsoch"
 
 RUN apt-get update && apt-get install -y \
     build-essential \
@@ -33,8 +33,13 @@ RUN apt-get update && apt-get install -y \
     libglib2.0-dev \
     libfuse3-dev \
     autoconf \
+    libsubid-dev \
+    cryptsetup-bin \
     libtool \
+    libsubid4 \
+    uidmap \
     fuse3 \
+    libuser1-dev \
     g++ \
     pkg-config
 
